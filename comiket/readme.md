@@ -1,5 +1,10 @@
 # CircleList
 コミックマーケット用のWebアプリケーション制作プロジェクト
+
+## 注意！
+これは旧CircleListのリポジトリです。CircleListは以下のリポジトリへ移動しました。  
+https://github.com/circle-list/circle-list.github.io
+
 ## これは何？
 Webアプリケーション「CircleList」のソースコードです。  
 CircleListでは、以下のことをすることができます。  
