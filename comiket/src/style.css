@@ -373,9 +373,9 @@ h5 {
 
 .scaling-squares-spinner, .scaling-squares-spinner * {
     box-sizing: border-box;
-  }
+}
 
-  .scaling-squares-spinner {
+.scaling-squares-spinner {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -384,9 +384,9 @@ h5 {
     animation: scaling-squares-animation 1250ms;
     animation-iteration-count: infinite;
     transform: rotate(0deg);
-  }
+}
 
-  .scaling-squares-spinner .square {
+.scaling-squares-spinner .square {
     height: calc(65px * 0.25 / 1.3);
     width: calc(65px * 0.25 / 1.3);
     margin-right: auto;
@@ -395,59 +395,59 @@ h5 {
     position: absolute;
     animation-duration: 1250ms;
     animation-iteration-count: infinite;
-  }
+}
 
-  .scaling-squares-spinner .square:nth-child(1) {
+.scaling-squares-spinner .square:nth-child(1) {
     animation-name: scaling-squares-spinner-animation-child-1;
-  }
+}
 
-  .scaling-squares-spinner .square:nth-child(2) {
+.scaling-squares-spinner .square:nth-child(2) {
     animation-name: scaling-squares-spinner-animation-child-2;
-  }
+}
 
-  .scaling-squares-spinner .square:nth-child(3) {
+.scaling-squares-spinner .square:nth-child(3) {
     animation-name: scaling-squares-spinner-animation-child-3;
-  }
+}
 
-  .scaling-squares-spinner .square:nth-child(4) {
+.scaling-squares-spinner .square:nth-child(4) {
     animation-name: scaling-squares-spinner-animation-child-4;
-  }
+}
 
 
-  @keyframes scaling-squares-animation {
+@keyframes scaling-squares-animation {
 
     50% {
-      transform: rotate(90deg);
+        transform: rotate(90deg);
     }
 
     100% {
-      transform: rotate(180deg);
+        transform: rotate(180deg);
     }
-  }
+}
 
-  @keyframes scaling-squares-spinner-animation-child-1 {
+@keyframes scaling-squares-spinner-animation-child-1 {
     50% {
-      transform: translate(150%,150%) scale(2,2);
+        transform: translate(150%,150%) scale(2,2);
     }
-  }
+}
 
-  @keyframes scaling-squares-spinner-animation-child-2 {
+@keyframes scaling-squares-spinner-animation-child-2 {
     50% {
-      transform: translate(-150%,150%) scale(2,2);
+        transform: translate(-150%,150%) scale(2,2);
     }
-  }
+}
 
-  @keyframes scaling-squares-spinner-animation-child-3 {
+@keyframes scaling-squares-spinner-animation-child-3 {
     50% {
-      transform: translate(-150%,-150%) scale(2,2);
+        transform: translate(-150%,-150%) scale(2,2);
     }
-  }
+}
 
-  @keyframes scaling-squares-spinner-animation-child-4 {
+@keyframes scaling-squares-spinner-animation-child-4 {
     50% {
-      transform: translate(150%,-150%) scale(2,2);
+        transform: translate(150%,-150%) scale(2,2);
     }
-  }
+}
 
 .share-btn {
     height: 20px !important;
