@@ -1,4 +1,4 @@
-VERSION = 'beta 0.1.0'
+VERSION = 'beta 0.1.1'
 
 $('#sp-version').text(VERSION)
 
@@ -58,7 +58,7 @@ function align(t) {
 
 function init() {
     var now = new Date()
-    $('#date_clock').text(now.getFullYear() + '/' + align(now.getMonth() + 1) + '/' + now.getDate())
+    $('#date_clock').text(now.getFullYear() + '/' + align(now.getMonth() + 1) + '/' + align(now.getDate()))
     $('#week_clock').text(week[now.getDay()])
 
     $('#week_clock').removeClass('red')
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
 // ニュースフィード
 $.ajax({
-    url: 'https://sp-wtr-api.gq/api/v1/news?type=pickup',
+    url: 'https://sp-wtr-api.gq/api/v1/news?type=pickup&f=' + (new Date).getTime(),
     dataType: 'json'
 }).done(function (response) {
     console.log(response)
@@ -242,7 +242,7 @@ function updateWeather() {
     }
 
     $.ajax({
-        url: 'https://sp-wtr-api.gq/api/v1/weather',
+        url: 'https://sp-wtr-api.gq/api/v1/weather?f=' + (new Date).getTime(),
         dataType: 'json',
         data: urlQuery,
     }).done(function (response) {
