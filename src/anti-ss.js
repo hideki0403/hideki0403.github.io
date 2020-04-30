@@ -9,9 +9,9 @@ function main() {
         if(findNotYet(hw)) {
             hw.children('a')[0].click()
             setTimeout(function() {
-                $('video').play()
+                $('.bmpui-image')[0].click()
                 $('video').on('ended', function() {main()})
-            }, 5000)
+            }, 10000)
             break
         }
 
