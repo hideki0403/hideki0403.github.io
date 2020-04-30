@@ -22,7 +22,7 @@ function main() {
 }
 
 function findNotYet(hw) {
-    if(hw.find('use').attr('xlink:href') === '#notyet' && !hw.innerText.match('確認テスト')) {
+    if(hw.find('use').attr('xlink:href') === '#notyet' && !hw.text().match('確認テスト')) {
         return true
     } else {
         return false
