@@ -16,9 +16,9 @@ jobs:
       - name: echo
         run: echo ${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
       - name: download image
-        run: wget -T 10 -P public/api/v1/vrc-calendar ${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
+        run: wget -T 10 -P public/api/v1/vrc-calendar http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
       - name: deploy
         uses: peaceiris/actions-gh-pages@v2.5.0
         env:
-          github_token: ${{ secrets.GITHUB_TOKEN }}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}}
           PUBLISH_DIR: public
