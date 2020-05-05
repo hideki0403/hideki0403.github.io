@@ -1,10 +1,11 @@
 name: vrc-update-api
 
 on:
+  deployment:
   schedule:
   # JST: 0 0 * * *  (UTC+9)
   # UTC: 0 15 * * *
-    - cron: 34 16 * * *
+    - cron: 59 14 * * *
 
 jobs:
   update-image:
