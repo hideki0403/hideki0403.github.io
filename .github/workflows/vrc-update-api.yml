@@ -1,6 +1,7 @@
 name: vrc-update-api
 
 on:
+  deployment:
   schedule:
   # JST: 0 0 * * *  (UTC+9)
   # UTC: 0 15 * * *
@@ -20,4 +21,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: public/api/v1/vrc-calendar
-          PUBLISH＿BRANCH: master 
+          PUBLISH_BRANCH: master 
