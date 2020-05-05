@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: make directory
         run: mkdir -p public/api/v1/vrc-calendar
+      - name: echo
+        run: echo ${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
       - name: download image
         run: wget -T 10 -P public/api/v1/vrc-calendar ${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
       - name: deploy
