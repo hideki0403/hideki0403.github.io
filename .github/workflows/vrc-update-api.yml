@@ -1,0 +1,22 @@
+name: vrc-update-api
+
+on:
+  schedule:
+  # JST: 0 0 * * *  (UTC+9)
+  # UTC: 0 15 * * *
+    - cron: 0 15 * * *
+
+jobs:
+  update-image:
+    name: update images
+    runs-on: ubuntu-latest
+    steps:
+      - name: make directory
+        run: mkdir -p public/api/v1/vrc-calendar
+      - name: download image
+        run: wget -T 10 -P public/api/v1/vrc-calendar ${{ secrets.API_ENDPOINT_VRC_CALENDAR }}
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v2.5.0
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}}
+          PUBLISH_DIR: public
