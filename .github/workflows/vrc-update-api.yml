@@ -14,9 +14,9 @@ jobs:
       - name: make directory
         run: mkdir -p public/api/v1/vrc-calendar
       - name: download image
-        run: wget -T 10 -P public/api/v1/vrc-calendar "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}"
+        run: wget -T 10 -P public/api/v1/vrc-calendar "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O calendar.png
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: public
