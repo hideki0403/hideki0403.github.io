@@ -5,8 +5,8 @@ on:
     branches:
       - master
   schedule:
-  # JST: 0 0 * * *  (UTC+9)
-  # UTC: 0 15 * * *
+      # JST: 0 0 * * *  (UTC+9)
+      # UTC: 0 15 * * *
     - cron: 59 14 * * *
 
 jobs:
@@ -18,6 +18,8 @@ jobs:
         run: mkdir public
       - name: download image
         run: wget -T 10 -P public "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O calendar.png
+      - name: ls
+        run: ls -lah
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -25,4 +27,3 @@ jobs:
           PUBLISH_DIR: public
           #PUBLISH_BRANCH: master 
           KEEP_FILES: true
-          ALLOW_EMPTY_COMMIT: true
