@@ -17,7 +17,7 @@ jobs:
       - name: make directory
         run: mkdir public
       - name: download image
-        run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O calendar.png -P public
+        run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O calendar.png -P ./public
       - name: ls
         run: ls -lah
       - name: deploy
