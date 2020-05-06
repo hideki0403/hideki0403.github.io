@@ -23,3 +23,4 @@ jobs:
           PUBLISH_DIR: ./api/v1/vrc-calendar
           #PUBLISH_BRANCH: master 
           KEEP_FILES: true
+          ALLOW_EMPTY_COMMIT: true
