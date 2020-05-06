@@ -14,14 +14,10 @@ jobs:
     name: update images
     runs-on: ubuntu-latest
     steps:
-      - name: make directory
+      - name: mkdir
         run: mkdir public
-      - name: make file
-        run: echo test > public/tmp
-      - name: download image
-        run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O calendar.png -P public
-      - name: ls
-        run: ls -lah
+      - name: wget
+        run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O public/calendar.png
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
