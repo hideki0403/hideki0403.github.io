@@ -1,9 +1,9 @@
 name: vrc-update-api
 
 on:
-  #push:
-  #  branches:
-  #    - master
+  push:
+    branches:
+      - master
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
