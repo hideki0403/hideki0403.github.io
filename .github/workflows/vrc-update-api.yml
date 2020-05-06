@@ -1,9 +1,9 @@
 name: vrc-update-api
 
 on:
-  push:
-    branches:
-      - master
+  #push:
+  #  branches:
+  #    - master
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mkdir
-        run: mkdir public
+        run: mkdir -p public/api/v1/vrc-calendar
       - name: wget
         run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O public/api/v1/vrc-calendar/calendar-v1.png
       - name: deploy
