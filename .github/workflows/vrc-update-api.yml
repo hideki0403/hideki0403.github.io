@@ -21,5 +21,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: ./api/v1/vrc-calendar
-          PUBLISH_BRANCH: master 
+          #PUBLISH_BRANCH: master 
           KEEP_FILES: true
