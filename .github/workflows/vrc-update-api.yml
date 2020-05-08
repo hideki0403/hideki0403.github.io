@@ -7,7 +7,7 @@ on:
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
-    - cron: 59 14 * * *
+    - cron: 5 14 * * *
 
 jobs:
   update-image:
