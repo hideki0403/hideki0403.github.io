@@ -1,13 +1,12 @@
 name: vrc-update-api
 
 on:
-  #push:
-  #  branches:
-  #    - master
+  repository_dispatch: 
+    types: [test_trigger]
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
-    - cron: 5 14 * * *
+    - cron: '50 14 * * *'
 
 jobs:
   update-image:
