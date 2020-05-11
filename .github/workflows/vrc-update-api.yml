@@ -13,8 +13,6 @@ jobs:
     name: update images
     runs-on: ubuntu-latest
     steps:
-      - name: set deploy date
-        run: export DEPLOY_DATE=`date`
       - name: mkdir
         run: mkdir -p public/api/v1/vrc-calendar
       - name: wget
@@ -26,4 +24,3 @@ jobs:
           PUBLISH_DIR: public
           PUBLISH_BRANCH: master 
           KEEP_FILES: true
-          COMMIT_MESSAGE: 'AutoDeploy: ${{ github.sha }} in ${{ env.DEPLOY_DATE }}'
