@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: mkdir
         run: mkdir -p public/api/v1/vrc-calendar
+      - name: date
+        run: date > public/api/v1/vrc-calendar/update
       - name: wget
         run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O public/api/v1/vrc-calendar/calendar-v1.png
       - name: deploy
