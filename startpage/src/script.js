@@ -1,4 +1,4 @@
-VERSION = 'beta 0.2.0'
+VERSION = 'beta 0.2.1'
 
 $('#sp-version').text(VERSION)
 
@@ -156,8 +156,7 @@ function appendWeather(res) {
         var w_icon = tmp.icon
         $('#weather-container').append('<div class="weather-box" id="wb-' + i + '"><p>' + w_time + '</p><img src="' + w_icon + '"><p>' + w_temp + '</p></div>')
         tippy('#wb-' + i, {
-            theme: 'dark',
-            content: '天気: ' + tmp.weather + '<br>最高気温: ' + data.main.temp_max + '℃<br>最低気温: ' + data.main.temp_min + '℃<br>湿度: ' + data.main.humidity +'%'
+            content: '天気: ' + tmp.weather + '<br>湿度: ' + data.main.humidity +'%'
         })
 
         // ゆき降らせる
@@ -406,12 +405,10 @@ $('#toggle-list').on('click', function() {
 
 /* Tippy */
 tippy('.setting-tip', {
-    theme: 'dark',
     content: '設定'
 })
 
 tippy('#toggle-list', {
-    theme: 'dark',
     content: '並び替え'
 })
 
