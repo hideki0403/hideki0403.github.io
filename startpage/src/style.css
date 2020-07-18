@@ -17,7 +17,6 @@ html, body {
 }
 
 body {
-  background: var(--background);
   font-family: 'Montserrat', sans-serif;
   color: white;
   position: relative;
@@ -127,13 +126,14 @@ i {
   display: flex;
   justify-content: center;
   position: absolute;
+  text-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
 }
   
 .clock__second, .clock__minute, .clock__hour, .clock__indicator {
   position: absolute;
   left: calc(50% - 1px);
   width: 2px;
-  background: #f4eed7;
+  background: #fff;
   transform-origin: bottom center;
   z-index: 2;
   border-radius: 1px;
@@ -174,7 +174,9 @@ i {
 }
 
 .clock__axis {
-  background: var(--main-color);
+  background: rgba(255, 255, 255, 0.25);
+  border: solid 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
   position: absolute;
   top: -10%;
   height: 120%;
@@ -390,12 +392,16 @@ html .dn {
 #search-input {
   height: 40px;
   padding: 0px 20px;
-  width: 80%;
+  width: 90%;
   border-radius: 30px;
   outline: 0;
-  background: var(--sub-color);
+  background: rgba(255, 255, 255, 0.4);
   color: #FFF;
   border: none;
+}
+
+#search-input::placeholder {
+  color: #fff !important;
 }
 
 #search-button {
@@ -430,7 +436,9 @@ html .dn {
 }
 
 .box {
-  background: var(--main-color);
+  background: rgba(255, 255, 255, 0.25);
+  border: solid 1px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
   padding: 20px;
   border-radius: 30px;
   margin-top: 20px;
@@ -438,6 +446,7 @@ html .dn {
   height: auto;
   width: 45%;
   position: relative;
+  text-shadow: 0 0 20px #aaa;
 }
 
 .remove-item {
@@ -477,7 +486,7 @@ html .dn {
 }
 
 .box-title {
-  color: var(--text-title);
+  text-shadow: 0 0 10px #888;
   display: inline-block;
 }
 
@@ -511,7 +520,7 @@ html .dn {
 }
 
 .cld-normal {
-  color: var(--text-sub);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .calender-month {
@@ -519,7 +528,19 @@ html .dn {
   margin: 5px;
   font-size: 15px;
   margin: 10px 0px;
-  color: var(--text)
+  color: rgba( 255, 255, 255, 0.75);
+}
+
+.background {
+  transition: 1s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url(https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=jerry-zhang-Y8lCoTRgHPE-unsplash.jpg);
+  background-size: cover;
 }
 
 section:nth-of-type(1) {
