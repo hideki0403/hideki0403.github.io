@@ -1,4 +1,4 @@
-VERSION = 'beta 0.2.1'
+VERSION = 'beta 0.2.2'
 
 $('#sp-version').text(VERSION)
 
@@ -115,7 +115,6 @@ $.ajax({
 
         tippy('#ns-' + i, {
             followCursor: 'horizontal',
-            theme: 'dark',
             content: pubTime,
             placement: 'left'
         })
