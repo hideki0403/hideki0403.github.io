@@ -24,4 +24,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PUBLISH_DIR: ./
           KEEP_FILES: true
-          exclude_assets: ""
+          EXCLUDE_ASSETS: ""
+          PUBLISH_BRANCH: master
