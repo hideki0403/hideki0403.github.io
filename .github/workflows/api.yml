@@ -13,16 +13,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mkdir
-        run: mkdir -p ./api/v1/
+        run: mkdir -p public/api/v1/
       - name: date
-        run: date > ./api/v1/commit
+        run: date > public/api/v1/commit
       - name: wget
-        run: wget -T 10 'http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}' -O ./api/v1/vrc-calendar.png
+        run: wget -T 10 'http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}' -O public/api/v1/vrc-calendar.png
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: public
           keep_files: true
           exclude_assets: ''
           publish_branch: master
