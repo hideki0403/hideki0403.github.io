@@ -5,7 +5,7 @@ on:
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
-    - cron: "50 14 * * *"
+    - cron: '50 14 * * *'
 
 jobs:
   update-image:
@@ -17,12 +17,12 @@ jobs:
       - name: date
         run: date > ./api/v1/commit
       - name: wget
-        run: wget -T 10 "http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}" -O ./api/v1/vrc-calendar.png
+        run: wget -T 10 'http://drive.google.com/uc?export=view&id=${{ secrets.API_ENDPOINT_VRC_CALENDAR }}' -O ./api/v1/vrc-calendar.png
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_DIR: ./
-          KEEP_FILES: true
-          EXCLUDE_ASSETS: ""
-          PUBLISH_BRANCH: master
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          keep_files: true
+          exclude_assets: ''
+          publish_branch: master
