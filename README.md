@@ -1,2 +1,3 @@
 # hideki0403.github.io
-![vrc-calendar-update](https://github.com/hideki0403/hideki0403.github.io/workflows/vrc-update-api/badge.svg)
+![Update VRC-api](https://github.com/hideki0403/hideki0403.github.io/workflows/Update%20VRC-api/badge.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/hideki0403/hideki0403.github.io)
