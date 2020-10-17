@@ -1,8 +1,7 @@
 name: vrc-update-api
 
 on:
-  repository_dispatch: 
-    types: [test_trigger]
+  workflow_dispatch:
   schedule:
       # JST: 0 0 * * *  (UTC+9)
       # UTC: 0 15 * * *
