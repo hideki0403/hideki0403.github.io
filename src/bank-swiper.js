@@ -1,4 +1,4 @@
-jQuery('body').append('<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <link rel="stylesheet" href="//unpkg.com/swiper/swiper-bundle.min.js"> <script src="//unpkg.com/swiper/swiper-bundle.min.js"></script>')
+jQuery('body').append('<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script><link rel="stylesheet" href="//unpkg.com/swiper/swiper-bundle.min.css"><script src="//unpkg.com/swiper/swiper-bundle.min.js"></script>')
 
 setTimeout(function() {
     $('#container').prepend('<div class="swiper-container" dir="rtl"><div id="manga-wrapper" class="swiper-wrapper"></div><div class="swiper-button-prev"></div><div class="swiper-button-next"></div><div class="swiper-scrollbar"></div></div>')
