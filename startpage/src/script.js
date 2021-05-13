@@ -1,4 +1,4 @@
-VERSION = 'beta 0.2.2'
+VERSION = 'beta 0.2.3'
 
 $('#sp-version').text(VERSION)
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
 // ニュースフィード
 $.ajax({
-    url: 'https://sp-wtr-api.gq/api/v1/news?type=pickup&f=' + (new Date).getTime(),
+    url: 'https://api.yukineko.me/startpage/v1/news?f=' + (new Date).getTime(),
     dataType: 'json'
 }).done(function (response) {
     console.log(response)
@@ -240,7 +240,7 @@ function updateWeather() {
     }
 
     $.ajax({
-        url: 'https://sp-wtr-api.gq/api/v1/weather?f=' + (new Date).getTime(),
+        url: 'https://api.yukineko.me/startpage/v1/weather?f=' + (new Date).getTime(),
         dataType: 'json',
         data: urlQuery,
     }).done(function (response) {
