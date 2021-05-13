@@ -19,7 +19,7 @@ function takeover() {
     }
 
     $.ajax({
-        url:'https://sp-wtr-api.gq/api/v1/circlelist/move-data-send',
+        url:'https://api.yukineko.me/circlelist/v1/move/send',
         type:'POST',
         data: temp
     })
