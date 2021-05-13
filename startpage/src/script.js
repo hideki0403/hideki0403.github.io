@@ -99,15 +99,22 @@ $(document).ready(function() {
     init()
 })
 
+const shuffle = ([...array]) => {
+    for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // ニュースフィード
 $.ajax({
     url: 'https://api.yukineko.me/startpage/v1/news?f=' + (new Date).getTime(),
     dataType: 'json'
 }).done(function (response) {
-    console.log(response)
-    var r = response
+    var r = shuffle(response)
 
-    for(var i = 0; r.length > i; i++) {
+    for(var i = 0; 5 > i; i++) {
         $('#newsfeed').append('<li id="ns-' + i + '"><a href="' + r[i].link +  '" target="_blank">' + r[i].title + '</a></li>')
 
         var n_time = new Date(r[i].pubDate)
@@ -234,7 +241,6 @@ function updateWeather() {
         const lat = positionData.latitude
         const lon = positionData.longitude
         urlQuery = 'lat=' + lat + '&lon=' + lon
-        console.log(lat + ' / ' + lon)
     } else {
         urlQuery = 'id=' + getStr('sp-cityid')
     }
@@ -243,10 +249,8 @@ function updateWeather() {
         url: 'https://api.yukineko.me/startpage/v1/weather?f=' + (new Date).getTime(),
         dataType: 'json',
         data: urlQuery,
-    }).done(function (response) {
+    }).done(function (res) {
         $('#weather-container').empty()
-        var res = JSON.parse(response)
-        console.log(res)
         appendWeather(res)
         toastr["success"]("最新の天気を取得しました！")
         $('#settings-location').text(res.city.name + ', ' + res.city.country)
