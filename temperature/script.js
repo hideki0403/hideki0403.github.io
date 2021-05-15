@@ -4,8 +4,6 @@ gradientStroke.addColorStop(1, '#6eb7ff')
 gradientStroke.addColorStop(0.5, '#f5c2ff')
 gradientStroke.addColorStop(0, '#ff6e81')
 
-console.log(ctx.canvas.height)
-
 var chart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -68,5 +66,4 @@ update()
 
 setInterval(function() {
     update()
-    console.log('update')
 }, 1000 * 60 * 5)
