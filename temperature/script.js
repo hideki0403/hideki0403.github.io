@@ -66,4 +66,7 @@ async function update() {
 
 update()
 
-setInterval(function() {update()}, 1000 * 60 * 5)
+setInterval(function() {
+    update()
+    console.log('update')
+}, 1000 * 60 * 5)
