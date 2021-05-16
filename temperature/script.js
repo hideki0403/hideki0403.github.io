@@ -36,7 +36,7 @@ var chart = new Chart(ctx, {
             },
             title: {
                 display: true,
-                text: 'Temp: --.--℃ (----.--.-- --:--:--)',
+                text: 'Temperature: --.--℃ (LastUpdate: ----.--.-- --:--:--)',
                 color: 'rgba(255,255,255,0.85)'
             }
         }
@@ -57,13 +57,18 @@ async function update() {
 
     chart.data.labels = labels
     chart.data.datasets[0].data = datasets
-    chart.options.plugins.title.text = `Temp: ${data[data.length - 1].temperature}℃ (${dayjs.unix(data[data.length - 1].unix).format('YYYY.MM.DD HH:mm:ss')})`
+    chart.options.plugins.title.text = `Temperature: ${data[data.length - 1].temperature}℃ (LastUpdate: ${dayjs.unix(data[data.length - 1].unix).format('YYYY.MM.DD HH:mm:ss')})`
 
     chart.update()
+    document.title = `${data[data.length - 1].temperature}℃ - ${dayjs.unix(data[data.length - 1].unix).format('HH:mm:ss')}`
 }
 
 update()
 
-setInterval(function() {
-    update()
-}, 1000 * 60 * 5)
+var currentTime = dayjs()
+var delay = (60 - currentTime.second()) + ((4 - (currentTime.minute() % 5)) * 60) + 30
+
+console.log('UpdateDelay: ' + delay + 'sec')
+setTimeout(function() {
+    setInterval(function() {update()}, 1000 * 300)
+}, delay * 1000)
