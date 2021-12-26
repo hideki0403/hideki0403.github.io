@@ -1,66 +1,148 @@
-var ctx = document.getElementById('temp-graph').getContext('2d');
-var gradientStroke = ctx.createLinearGradient(0, 0, 0, window.innerHeight)
-gradientStroke.addColorStop(1, '#6eb7ff')
-gradientStroke.addColorStop(0.5, '#f5c2ff')
-gradientStroke.addColorStop(0, '#ff6e81')
+const timezone = 9
 
-var chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: [],
-        datasets: [{
-            data: [],
-            borderColor: gradientStroke,
-            pointRadius: 0,
-            borderWidth: 2,
-        }]
+var chart = new ApexCharts(document.querySelector('#graph'), {
+    chart: {
+        type: 'area',
+        height: '100%',
+        width: '100%',
+        dropShadow: {
+            enabled: true,
+            top: 0,
+            left: 0,
+            blur: 3,
+            opacity: 0.5
+        }
     },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            x: {
-                ticks: {
-                    color: 'rgba(255,255,255,0.7)'
-                }
-            },
-            y: {
-                ticks: {
-                    color: 'rgba(255,255,255,0.7)'
-                }
-            }
+    colors: ['#81A1C1'],
+    title: {
+        text: '読み込み中',
+        style: {
+            color: '#E5E9F0'
+        }
+    },
+    series: [{
+        name: '室温',
+        data: []
+    }],
+    stroke: {
+        curve: 'smooth',
+        width: 2
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            enabled: true,
+            opacityFrom: 0.55,
+            opacityTo: 0
+        }
+    },
+    tooltip: {
+        theme: 'dark',
+        x: {
+            format: 'yyyy/MM/dd HH:mm',
         },
-        plugins: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: 'Temperature: --.--℃ (LastUpdate: ----.--.-- --:--:--)',
-                color: 'rgba(255,255,255,0.85)'
+        y: {
+            formatter: (value) => { return value.toFixed(1) + '℃' }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        tooltip: {
+            enabled: false
+        },
+        labels: {
+            style: {
+                colors: '#D8DEE9'
             }
         }
-    }
+    },
+    yaxis: {
+        labels: {
+            formatter: (value) => {return value.toFixed(0) + '℃'},
+            style: {
+                colors: '#D8DEE9'
+            }
+        }
+    },
+    annotations: {
+        yaxis: [
+            {
+                y: 18.5,
+                borderColor: '#5E81AC',
+                label: {
+                    borderColor: '#5E81AC',
+                    style: {
+                        color: '#D8DEE9',
+                        background: '#5E81AC'
+                    },
+                    text: 'さむい'
+                }
+            }, {
+                y: 28.5,
+                borderColor: '#BF616A',
+                label: {
+                    borderColor: '#BF616A',
+                    style: {
+                        color: '#D8DEE9',
+                        background: '#BF616A'
+                    },
+                    text: 'あつい'
+                }
+            }
+        ]
+    },
+    dataLabels: {
+        enabled: false
+    },
 })
+
+chart.render()
 
 async function update() {
     var data = (await superagent.get('https://api.yukineko.me/temperature/v1/get')).body
 
     var datasets = []
-    var labels = []
-    for(var i = 0; data.length > i; i++) {
-        var content = data[i]
-        var label = dayjs.unix(content.unix).format('HH:mm')
-        datasets.push(content.temperature)
-        labels.push(label)
+    var total = 0
+
+    data.forEach(content => {
+        datasets.push({
+            x: (content.unix * 1000) + (timezone * 3600 * 1000),
+            y: content.temperature * 1
+        })
+
+        total += content.temperature * 1
+    })
+
+    chart.updateOptions({
+        title: {
+            text: `現在の室温: ${(data[data.length - 1].temperature * 1).toFixed(1)}℃ (最終更新: ${dayjs.unix(data[data.length - 1].unix).format('HH:mm')})`
+        },
+        colors: [getMainColor(total / data.length)]
+    })
+
+    chart.updateSeries([{data: datasets}], true)
+
+    document.title = `${(data[data.length - 1].temperature * 1).toFixed(1)}℃ - ${dayjs.unix(data[data.length - 1].unix).format('HH:mm')}`
+}
+
+function getMainColor(temp) {
+    switch(temp) {
+        case temp <= 18.5 && temp: {
+            return '#81A1C1'
+        }
+
+        case (28.5 >= temp && temp > 18.5) && temp: {
+            return '#A3BE8C'
+        }
+
+        case temp > 28.5 && temp: {
+            return '#BA5E67'
+        }
+
+        default: {
+            return '#ECEFF4'
+        }
     }
-
-    chart.data.labels = labels
-    chart.data.datasets[0].data = datasets
-    chart.options.plugins.title.text = `Temperature: ${data[data.length - 1].temperature}℃ (LastUpdate: ${dayjs.unix(data[data.length - 1].unix).format('YYYY.MM.DD HH:mm:ss')})`
-
-    chart.update()
-    document.title = `${data[data.length - 1].temperature}℃ - ${dayjs.unix(data[data.length - 1].unix).format('HH:mm:ss')}`
 }
 
 update()

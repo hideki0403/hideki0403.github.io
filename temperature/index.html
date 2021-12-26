@@ -2,12 +2,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Temperature</title>
+		<style>
+			body {
+				background: #2E3440;
+				margin: 0px;
+			}
+
+			::-webkit-scrollbar {
+				display:none;
+			}
+		</style>
 	</head>
-	<body style="background: #202124;">
-		<canvas id="temp-graph"></canvas>
+	<body>
+		<div id="graph"></div>
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
 	<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script type="text/javascript" src="script.js"></script>
 </html>
