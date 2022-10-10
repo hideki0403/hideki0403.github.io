@@ -1,1 +1,0 @@
-const view = document.getElementById('view')
