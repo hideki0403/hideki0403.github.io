@@ -9,5 +9,6 @@ window.onload = () => {
 
     interactiveCanvas.getHeaderHeightPx().then((height) => {
         document.body.style.paddingTop = `${height}px`
+        document.getElementById('iframe').style.height = `calc(100% - ${height}px)`
     })
 }
